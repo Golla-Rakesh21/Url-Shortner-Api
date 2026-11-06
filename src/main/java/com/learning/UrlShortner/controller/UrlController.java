@@ -134,6 +134,19 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
+
+@Tag(
+        name = "URL Management",
+        description = """
+        Manage shortened URLs associated with the
+        authenticated user.
+
+        Users can create, retrieve, update, enable,
+        disable and delete their own shortened URLs.
+
+        A valid JWT Bearer token is required.
+        """
+)
 @RestController
 @RequestMapping("/api/urls")
 @Tag(
@@ -162,7 +175,7 @@ public class UrlController {
 
     // CREATE SHORT URL
     @PostMapping("/create")
-    @Operation(summary = "Create a short URL")
+    @Operation(summary = "Create a short URL, customAlias is optional , date must be future to expire")
     public ResponseEntity<UrlResponse> createUrl(
 
             @Valid @RequestBody CreateUrlRequest request,
@@ -186,7 +199,7 @@ public class UrlController {
 
     // GET ALL URLS OF LOGGED-IN USER
     @GetMapping("/getAll")
-    @Operation(summary = "Get all URLs of authenticated user")
+    @Operation(summary = "Get all URLs ,created by authenticated user")
     public ResponseEntity<List<UrlResponse>> getAll(
 
             Authentication authentication) {
@@ -204,7 +217,7 @@ public class UrlController {
 
     // GET URL USING SHORT CODE
     @GetMapping("/get/{shortCode}")
-    @Operation(summary = "Get URL details using short code")
+    @Operation(summary = "Get URL details using short code , created by authenticated user")
     public ResponseEntity<UrlResponse> getByShort(
 
             @PathVariable String shortCode,
@@ -225,7 +238,7 @@ public class UrlController {
 
     // DELETE URL
     @DeleteMapping("/delete/{shortCode}")
-    @Operation(summary = "Delete an owned short URL")
+    @Operation(summary = "Delete an owned short URL , ,created by authenticated user")
     public ResponseEntity<Void> deleteUrl(
 
             @PathVariable String shortCode,
@@ -242,7 +255,7 @@ public class UrlController {
 
     // ENABLE / DISABLE URL
     @PatchMapping("/{shortCode}/status")
-    @Operation(summary = "Enable or disable an owned short URL")
+    @Operation(summary = "Enable or disable an owned short URL ,created by authenticated user")
     public ResponseEntity<String> updateStatus(
 
             @PathVariable String shortCode,
@@ -265,7 +278,7 @@ public class UrlController {
 
     // UPDATE URL SETTINGS
     @PutMapping("/update/{shortCode}")
-    @Operation(summary = "Update URL settings without changing short code")
+    @Operation(summary = "Update URL settings without changing short code , prefer if you want to change the originalURL,expiry both are compalsary")
     public ResponseEntity<UrlResponse> updateUrlSettings(
 
             @PathVariable String shortCode,
