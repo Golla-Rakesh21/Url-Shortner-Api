@@ -22,7 +22,7 @@ public class JwtService {
         return Secret;
     }
     private final SecretKey key= Keys.hmacShaKeyFor(Decoders.BASE64.decode(generateSecret()));
-    private final long expirationMs=180000;
+    private final long expirationMs=900000;
 
     public String generateToken(String email){
         Date now=new Date();
