@@ -138,13 +138,7 @@ import java.util.List;
 @Tag(
         name = "URL Management",
         description = """
-        Manage shortened URLs associated with the
-        authenticated user.
-
-        Users can create, retrieve, update, enable,
-        disable and delete their own shortened URLs.
-
-        A valid JWT Bearer token is required.
+        Manage shortened URLs associated with the authenticated user.Users can create, retrieve, update, enable,disable and delete their own shortened URLs.A valid JWT Bearer token is required.
         """
 )
 @RestController
@@ -238,7 +232,7 @@ public class UrlController {
 
     // DELETE URL
     @DeleteMapping("/delete/{shortCode}")
-    @Operation(summary = "Delete an owned short URL , ,created by authenticated user")
+    @Operation(summary = "Delete an owned short URL ,created by authenticated user")
     public ResponseEntity<Void> deleteUrl(
 
             @PathVariable String shortCode,

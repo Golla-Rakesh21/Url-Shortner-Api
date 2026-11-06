@@ -53,11 +53,9 @@ import java.net.URI;
 @Tag(
         name = "URL Redirection",
         description = """
-        Redirect users from a short URL to its
-        corresponding original destination.
+        Redirect users from a short URL to its corresponding original destination.This endpoint is publicly accessible and does not require authentication.
 
-        This endpoint is publicly accessible
-        and does not require authentication.
+        
         """
 )
 public class RedirectController {

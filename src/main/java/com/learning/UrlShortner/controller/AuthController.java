@@ -58,13 +58,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(
         name = "Authentication",
         description = """
-        APIs for user registration and authentication.
-
-        Users can create an account and authenticate
-        using their registered email and password.
-
-        Successful login returns a JWT access token
-        required for accessing protected endpoints.
+        APIs for user registration and authentication.Users can create an account and authenticate using their registered email and password.Successful login returns a JWT access token required for accessing protected endpoints.
         """
 )
 @RestController
